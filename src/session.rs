@@ -47,8 +47,6 @@ impl Session {
                 .await?,
         )?;
 
-        println!("{:#?}", moodle_top);
-
         Ok(Session {
             client,
             session_key: moodle_top.session_key,
