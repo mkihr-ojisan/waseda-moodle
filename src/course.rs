@@ -2,6 +2,7 @@ use crate::*;
 
 pub async fn fetch_enrolled_courses(session: &Session) -> Result<Vec<Course>> {
     let mut courses = Vec::new();
+    let mut ids = std::collections::HashSet::new();
 
     let mut offset = 0;
     loop {
@@ -61,10 +62,8 @@ pub async fn fetch_enrolled_courses(session: &Session) -> Result<Vec<Course>> {
                 "received invalid response while fetching enrolled courses list".to_owned(),
             )))?;
 
-            if courses.len() == 0 || {
-                let last: &Course = courses.last().unwrap();
-                last.id != course.id
-            } {
+            if !ids.contains(&course.id) {
+                ids.insert(course.id);
                 courses.push(course);
             }
         }
