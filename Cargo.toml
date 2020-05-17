@@ -1,6 +1,6 @@
 [package]
 name = "waseda-moodle"
-version = "0.1.2"
+version = "0.2.0"
 authors = ["mkihr-ojisan <52490041+mkihr-ojisan@users.noreply.github.com>"]
 edition = "2018"
 license = "MIT"
